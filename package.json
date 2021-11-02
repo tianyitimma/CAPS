@@ -1,0 +1,25 @@
+{
+  "name": "CAPS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tianyitimma/CAPS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tianyitimma/CAPS/issues"
+  },
+  "homepage": "https://github.com/tianyitimma/CAPS#readme",
+  "dependencies": {
+    "events": "^3.3.0",
+    "faker": "^5.5.3",
+    "jest": "^27.3.1"
+  }
+}
