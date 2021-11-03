@@ -1,28 +1,21 @@
 'use strict';
 
-const { EventEmitter } = require('events');
-// const faker = require('faker');
-//const ac = new AbortController();
+const caps = require('./events.js');
 
-const eventPool = new EventEmitter(); 
-// (async () => {
-//   const ee = new EventEmitter();
+const logEvent = (event) => (payload) => {
+  let log = {
+    event,
+    time: new Date().toString(),
+    payload,
+  };
+  console.log('EVENT', log);
+};
 
-//   // Emit later on
-//   process.nextTick(() => {
-//     ee.emit('foo', 'bar');
-//     ee.emit('foo', 42);
-//   });
 
-//   for await (const event of on(ee, 'foo', { signal: ac.signal })) {
-//     // The execution of this inner block is synchronous and it
-//     // processes one event at a time (even with await). Do not use
-//     // if concurrent execution is required.
-//     console.log(event); // prints ['bar'] [42]
-//   }
-//   // Unreachable here
-// })();
+caps.on('pickup', logEvent('pickup'));
+caps.on('in-transit', logEvent('in-transit'));
+caps.on('delivered', logEvent('delivered'));
 
-// process.nextTick(() => ac.abort());
 
-module.exports = eventPool;
+require('../Driver/driver.js');
+require('../Vendor/vender.js');
