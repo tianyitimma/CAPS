@@ -7,13 +7,13 @@ const socket = io.connect('http://localhost:3001/caps');
 
 const faker = require('faker');
 
-socket.emit('join', '1-206-flowers');
+//socket.emit('join', '1-206-flowers');
 
 socket.on('delivered', deliveredPackage);
 
 function pickup(storeName) {
 
-  const orderID = faker.random.uuid();
+  const orderID = faker.datatype.uuid();
   const customer = faker.name.findName();
   const cityState = `${faker.address.city(), faker.address.state()}`;
   
@@ -31,5 +31,5 @@ function deliveredPackage(payload) {
 }
 
 setInterval(() => {
-  socket.emit('pickup', pickup('1-206-flowers'));
-}, 1000);
+  socket.emit('package', pickup('1-206-flowers'));
+}, 4000);
